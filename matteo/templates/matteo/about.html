@@ -1,0 +1,68 @@
+{% extends 'matteo/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+            <!-- Title -->
+            <div class="text-center mb-5">
+                <h1 class="titolo">About Me</h1>
+            </div>
+
+            <!-- Content - Card trasparente -->
+            <div class="card portfolio-card-large about-content-transparent">
+                <div class="card-body">
+                    <!-- Immagine più piccola -->
+                    <div class="text-center mb-4">
+                        <img src="{% static 'matteo/images/Me.png' %}" alt="Matteo Anghileri" class="about-profile-img">
+                    </div>
+
+                    <!-- Testo bianco -->
+                    <div class="about-content text-center about-text-white">
+                        <h2 class="card-title mb-4">Welcome!</h2>
+                        
+                        <p class="card-text">
+                            I'm Matteo, a <mark>3D Artist</mark> from Milan who will soon graduate in Creative Technologies (3D and VFX)
+                            at <mark>NABA</mark>.
+                            My passion is to transform ideas into unforgettable <mark>visual narratives</mark>.
+                        </p>
+                        
+                        <p class="card-text">
+                            Specialized in <mark>Maya</mark> and <mark>Unreal Engine</mark>, I can manage the entire <mark>3D production
+                            pipeline</mark>, from concept development and modeling to lighting, rendering and final compositing.
+                        </p>
+                        
+                        <p class="card-text">
+                            Fueled by a <mark>tireless curiosity</mark>, I'm always looking for new technical and artistic horizons.
+                        </p>
+
+                        <!-- Skills -->
+                        <div class="skills mt-5">
+                            <h4 class="card-title mb-4">Core Skills</h4>
+                            <div class="d-flex flex-wrap gap-2 justify-content-center">
+                                <span class="badge about-skill-badge px-3 py-2">3D Modeling</span>
+                                <span class="badge about-skill-badge px-3 py-2">Texturing</span>
+                                <span class="badge about-skill-badge px-3 py-2">Lighting</span>
+                                <span class="badge about-skill-badge px-3 py-2">Rendering</span>
+                                <span class="badge about-skill-badge px-3 py-2">Compositing</span>
+                                <span class="badge about-skill-badge px-3 py-2">Unreal Engine</span>
+                                <span class="badge about-skill-badge px-3 py-2">Maya</span>
+                                <span class="badge about-skill-badge px-3 py-2">Blender</span>
+                                <span class="badge about-skill-badge px-3 py-2">Visual Storytelling</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back Button -->
+            <div class="text-center mt-4">
+                <a href="{% url 'home' %}" class="btn about-btn-outline btn-lg">
+                    ← Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'matteo/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="home" class="hero-section d-flex align-items-center justify-content-center">
+    <video autoplay muted loop playsinline preload="auto" class="hero-video">
+        <source src="{% static 'matteo/video/Matteo_Anghileri_Showreel_2025.mp4' %}" type="video/mp4">
+        Il tuo browser non supporta il tag video.
+    </video>
+    
+    <div class="hero-content text-center text-white">
+        <h1 class="hero-title">MATTEO ANGHILERI</h1>
+        <p class="hero-subtitle">3D Artist & Visual Designer</p>
+        <a href="https://www.youtube.com/watch?v=dJxUDu5DoGo" class="btn btn-showreel" target="_blank">
+            <i class="bi bi-play-circle-fill me-2"></i>Watch Showreel
+        </a>
+    </div>
+    
+    <!-- Overlay per migliore leggibilità -->
+    <div class="video-overlay"></div>
+</section>
+
+
+
+{% endblock %}

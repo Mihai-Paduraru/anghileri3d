@@ -1,0 +1,119 @@
+{% extends 'matteo/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-7">
+            <!-- Header -->
+            <div class="project-heading text-center mb-4">
+                <h1 class="titolo mb-2">NY CAFE</h1>
+                <h3 class="text-light">Tornaround Environment Design</h3>
+            </div>
+
+            <!-- Video Card -->
+            <div class="card portfolio-card-large mb-4 video-card" style="position: relative; border-radius: 15px; overflow: hidden; cursor: pointer;">
+
+                <!-- Thumbnail Image -->
+                <img class="thumbnail-img w-100" 
+                     src="{% static 'matteo/images/thumb5.png' %}" 
+                     alt="NY CAFE Preview" 
+                     style="border-radius: 15px; display: block;">
+
+                <!-- Play Button Overlay -->
+                <div class="play-button-overlay">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="white" viewBox="0 0 16 16">
+                        <circle cx="8" cy="8" r="7" stroke="white" stroke-width="2" fill="rgba(0,0,0,0.6)" />
+                        <polygon points="6,4 12,8 6,12" fill="white"/>
+                    </svg>
+                </div>
+
+                <!-- Preview Video -->
+                <video class="preview-video w-100" muted loop 
+                       style="border-radius: 15px; display: none;">
+                    <source src="{% static 'matteo/video/NYcafe.webm' %}" type="video/webm">
+                </video>
+
+                <!-- Full YouTube Video -->
+                <div class="full-video" style="display:none; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px;">
+                    <iframe id="youtube-video" 
+                            src="https://www.youtube.com/embed/CN-SaXSH6Vk?start=2&autoplay=1&mute=1" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            style="position:absolute; top:0; left:0; width:100%; height:100%;">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="description mt-4 text-light">
+                <p><mark>NY CAFE</mark> is a 3D diorama inspired by the original concept by Dzmitry Doryn.</p>
+                <p>I modeled the entire scene in <mark>Autodesk Maya</mark>, defining every detail of the furniture and architecture. The textures were created in <mark>Substance Painter</mark>, while lighting and rendering were managed with <mark>Arnold</mark>. Finally, I took care of compositing and color grading in <mark>NukeX</mark>, refining the atmosphere and color palette.</p>
+                <p>The result is a <mark>tournaround</mark> of a New York Bar that conveys the warm and welcoming atmosphere of a metropolitan cafe.</p>
+
+                <!-- Technologies -->
+                <div class="mt-4">
+                    <h4 class="mb-3 text-light">Technologies Used</h4>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge bg-primary px-3 py-2">Unreal Engine</span>
+                        <span class="badge bg-primary px-3 py-2">Maya</span>
+                        <span class="badge bg-primary px-3 py-2">Substance Painter</span>
+                        <span class="badge bg-primary px-3 py-2">Arnold</span>
+                        <span class="badge bg-primary px-3 py-2">NukeX</span>
+                    </div>
+                </div>
+
+                <!-- Back Button -->
+                <div class="mt-4 text-center">
+                    <a href="{% url 'portfolio' %}" class="btn btn-outline-light btn-lg">
+                        ← Back to Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+const videoCard = document.querySelector('.video-card');
+const thumbnailImg = videoCard.querySelector('.thumbnail-img');
+const previewVideo = videoCard.querySelector('.preview-video');
+const fullVideo = videoCard.querySelector('.full-video');
+const playButton = videoCard.querySelector('.play-button-overlay');
+let fullPlaying = false;
+
+// Preview autoplay on hover
+videoCard.addEventListener('mouseenter', () => {
+    if (!fullPlaying) {
+        thumbnailImg.style.display = 'none';
+        previewVideo.style.display = 'block';
+        previewVideo.play();
+    }
+});
+
+videoCard.addEventListener('mouseleave', () => {
+    if (!fullPlaying) {
+        previewVideo.pause();
+        previewVideo.currentTime = 0;
+        previewVideo.style.display = 'none';
+        thumbnailImg.style.display = 'block';
+    }
+});
+
+// Full video on click (Play button)
+playButton.addEventListener('click', (e) => {
+    e.stopPropagation(); // evita conflitti col click sulla card
+    if (!fullPlaying) {
+        fullPlaying = true;
+        playButton.style.display = 'none';
+        previewVideo.style.display = 'none';
+        thumbnailImg.style.display = 'none';
+        fullVideo.style.display = 'block';
+    }
+});
+</script>
+{% endblock %}

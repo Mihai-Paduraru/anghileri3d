@@ -1,0 +1,151 @@
+{% extends 'matteo/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <h1 class="text-center mb-5 titolo">MY PORTFOLIO</h1>
+    
+    <div class="row">
+        {% for project in projects %}
+        <!-- Progetti dinamici dal database -->
+        <div class="col-12 mb-5">
+            <div class="card portfolio-card-large">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        {% if project.image %}
+                        <img src="{{ project.image.url }}" class="img-fluid portfolio-img-large" alt="{{ project.title }}">
+                        {% else %}
+                        <img src="{% static 'matteo/images/project-placeholder.jpg' %}" class="img-fluid portfolio-img-large" alt="{{ project.title }}">
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body h-100 d-flex flex-column justify-content-center align-items-center text-center">
+                            <h3 class="card-title">{{ project.title }}</h3>
+                            <p class="card-text flex-grow-1">{{ project.description }}</p>
+                            <p class="text-muted mb-3"><strong>Tecnologie:</strong> {{ project.technologies }}</p>
+                            <div class="card-footer bg-transparent px-0">
+                                {% if project.url %}
+                                <a href="{{ project.url }}" target="_blank" class="btn btn-primary me-2">Vedi Progetto</a>
+                                {% endif %}
+                                {% if project.github_url %}
+                                <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline-dark">GitHub</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        {% endfor %}
+
+        <!-- Progetto UE Cinematic -->
+        <div class="col-12 mb-5">
+            <a href="{% url 'ue_cinematic' %}" class="text-decoration-none">
+                <div class="card portfolio-card-large">
+                    <div class="row g-0">
+                        <div class="col-md-6">
+                            <img src="{% static 'matteo/images/thumb1.png' %}" class="img-fluid portfolio-img-large" alt="UE Cinematic">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body h-100 d-flex flex-column justify-content-center align-items-center text-center">
+                                <h3 class="card-title">UE CINEMATIC</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <!-- The Golden Fall -->
+        <div class="col-12 mb-5">
+            <a href="{% url 'the_golden_fall' %}" class="text-decoration-none">
+                <div class="card portfolio-card-large">
+                    <div class="row g-0">
+                        <div class="col-md-6">
+                            <img src="{% static 'matteo/images/thumb6.png' %}" class="img-fluid portfolio-img-large" alt="The Golden Fall">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body h-100 d-flex flex-column justify-content-center align-items-center text-center">
+                                <h3 class="card-title">THE GOLDEN FALL</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <!-- Rise of the Badlands Vehicle -->
+        <div class="col-12 mb-5">
+            <a href="{% url 'rise_of_the_badlands_vehicle' %}" class="text-decoration-none">
+                <div class="card portfolio-card-large">
+                    <div class="row g-0">
+                        <div class="col-md-6">
+                            <img src="{% static 'matteo/images/thumb2.png' %}" class="img-fluid portfolio-img-large" alt="Rise of the Badlands Vehicle">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body h-100 d-flex flex-column justify-content-center align-items-center text-center">
+                                <h3 class="card-title">RISE OF THE BADLANDS VEHICLE</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <!-- Cafe -->
+        <div class="col-12 mb-5">
+            <a href="{% url 'cafe' %}" class="text-decoration-none">
+                <div class="card portfolio-card-large">
+                    <div class="row g-0">
+                        <div class="col-md-6">
+                            <img src="{% static 'matteo/images/thumb5.png' %}" class="img-fluid portfolio-img-large" alt="Cafe">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body h-100 d-flex flex-column justify-content-center align-items-center text-center">
+                                <h3 class="card-title">CAFE</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <!-- Bar -->
+        <div class="col-12 mb-5">
+            <a href="{% url 'bar' %}" class="text-decoration-none">
+                <div class="card portfolio-card-large">
+                    <div class="row g-0">
+                        <div class="col-md-6">
+                            <img src="{% static 'matteo/images/thumb4.png' %}" class="img-fluid portfolio-img-large" alt="Bar">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body h-100 d-flex flex-column justify-content-center align-items-center text-center">
+                                <h3 class="card-title">BAR</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+        <!-- ZBrush Project -->
+        <div class="col-12 mb-5">
+            <a href="{% url 'zbrush_project' %}" class="text-decoration-none">
+                <div class="card portfolio-card-large">
+                    <div class="row g-0">
+                        <div class="col-md-6">
+                            <img src="{% static 'matteo/images/thumb3.png' %}" class="img-fluid portfolio-img-large" alt="ZBrush Project">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body h-100 d-flex flex-column justify-content-center align-items-center text-center">
+                                <h3 class="card-title">ZBRUSH PROJECT</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

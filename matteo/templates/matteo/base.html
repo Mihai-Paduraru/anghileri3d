@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANGHILERI 3D</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'matteo/images/LogoME.png' %}">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'matteo/css/style.css' %}">
+</head>
+<body>
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline preload="auto" class="global-video-bg">
+        <source src="{% static 'matteo/video/overlay.mp4' %}" type="video/mp4">
+    </video>
+    
+    <!-- Video Overlay -->
+    <div class="global-video-overlay"></div>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <img src="{% static 'matteo/images/Logo.png' %}" alt="AM Logo" class="navbar-logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'portfolio' %}">My Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about' %}">About Me</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contact' %}">Contact Me</a>
+                        </li>
+                    </ul>
+                    <div class="social-icons d-flex">
+                        <a href="{% static 'matteo/docs/CV.pdf' %}" target="_blank" title="Download CV" class="social-link">
+                            <i class="bi bi-file-earmark-person"></i>
+                        </a>
+                        <a href="mailto:matteo.anghileri88@gmail.com" title="Email" class="social-link">
+                            <i class="bi bi-envelope"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/matteo-anghileri-016236370/" target="_blank" title="LinkedIn" class="social-link">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'matteo/js/script.js' %}"></script>
+</body>
+</html>

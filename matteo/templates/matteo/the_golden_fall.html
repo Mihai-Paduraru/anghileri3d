@@ -1,0 +1,118 @@
+{% extends 'matteo/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-7">
+            <!-- Header -->
+            <div class="project-heading text-center mb-4">
+                <h1 class="titolo mb-2">THE GOLDEN FALL</h1>
+                <h3 class="text-light">Cinematic Team Project</h3>
+            </div>
+
+            <!-- Video Card -->
+            <div class="card portfolio-card-large mb-4 video-card" style="position: relative; border-radius: 15px; overflow: hidden; cursor: pointer;">
+
+                <!-- Thumbnail Image -->
+                <img class="thumbnail-img w-100" 
+                     src="{% static 'matteo/images/thumb6.png' %}" 
+                     alt="THE GOLDEN FALL Preview" 
+                     style="border-radius: 15px; display: block;">
+
+                <!-- Play Button Overlay -->
+                <div class="play-button-overlay">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="white" viewBox="0 0 16 16">
+                        <circle cx="8" cy="8" r="7" stroke="white" stroke-width="2" fill="rgba(0,0,0,0.6)" />
+                        <polygon points="6,4 12,8 6,12" fill="white"/>
+                    </svg>
+                </div>
+
+                <!-- Preview Video -->
+                <video class="preview-video w-100" muted loop 
+                       style="border-radius: 15px; display: none;">
+                    <source src="{% static 'matteo/video/the golden fall.webm' %}" type="video/webm">
+                </video>
+
+                <!-- Full YouTube Video -->
+                <div class="full-video" style="display:none; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px;">
+                    <iframe id="youtube-video" 
+                            src="https://www.youtube.com/embed/O5SDPItlq0M?autoplay=1&mute=1&loop=1&playlist=O5SDPItlq0M&start=99" 
+                            title="UE Cinematic" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius: 15px;">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="description mt-4 text-light">
+                <p>Cinematic sequence produced with <mark class="px-2 py-1 rounded">Unreal Engine</mark> by a team of four people.</p>
+                <p>For this project I took care of the modeling and texturing of the interiors of the Mayan temple, using the software: <mark class="px-2 py-1 rounded">Maya</mark>, <mark class="px-2 py-1 rounded">Substance Painter</mark> and <mark class="px-2 py-1 rounded">ZBrush</mark>, thus creating the materials and architectural details to immerse the viewer in the atmosphere of the <mark class="px-2 py-1 rounded">ancient civilization</mark>.</p>
+                <p>A heartfelt thanks to my colleagues – Michele Brez, Gabriele Dallari and Julia Hoa – for the precious collaboration.</p>
+
+                <!-- Technologies -->
+                <div class="mt-4">
+                    <h4 class="mb-3 text-light">Technologies Used</h4>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge bg-primary px-3 py-2">Unreal Engine</span>
+                        <span class="badge bg-primary px-3 py-2">Maya</span>
+                        <span class="badge bg-primary px-3 py-2">Substance Painter</span>
+                        <span class="badge bg-primary px-3 py-2">ZBrush</span>
+                    </div>
+                </div>
+
+                <!-- Back Button -->
+                <div class="mt-4 text-center">
+                    <a href="{% url 'portfolio' %}" class="btn btn-outline-light btn-lg">
+                        ← Back to Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+const videoCard = document.querySelector('.video-card');
+const thumbnailImg = videoCard.querySelector('.thumbnail-img');
+const previewVideo = videoCard.querySelector('.preview-video');
+const fullVideo = videoCard.querySelector('.full-video');
+const playButton = videoCard.querySelector('.play-button-overlay');
+let fullPlaying = false;
+
+// Preview autoplay on hover
+videoCard.addEventListener('mouseenter', () => {
+    if (!fullPlaying) {
+        thumbnailImg.style.display = 'none';
+        previewVideo.style.display = 'block';
+        previewVideo.play();
+    }
+});
+
+videoCard.addEventListener('mouseleave', () => {
+    if (!fullPlaying) {
+        previewVideo.pause();
+        previewVideo.currentTime = 0;
+        previewVideo.style.display = 'none';
+        thumbnailImg.style.display = 'block';
+    }
+});
+
+// Full video on click (Play button)
+playButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (!fullPlaying) {
+        fullPlaying = true;
+        playButton.style.display = 'none';
+        previewVideo.style.display = 'none';
+        thumbnailImg.style.display = 'none';
+        fullVideo.style.display = 'block';
+    }
+});
+</script>
+{% endblock %}
