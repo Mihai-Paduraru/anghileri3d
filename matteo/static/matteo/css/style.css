@@ -80,7 +80,7 @@ h1, h2, h3, p, .card-title, .card-text {
     left: 50%;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #ff6b6b, #ee5a24);
+    background: linear-gradient(90deg, #009ddb, #3BB0DE);
     transition: all 0.3s ease;
     transform: translateX(-50%);
 }
@@ -163,7 +163,7 @@ h1, h2, h3, p, .card-title, .card-text {
 }
 
 .btn-showreel {
-    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    background: linear-gradient(45deg, #0083db, #3BB0DE);
     border: none;
     padding: 15px 30px;
     font-size: 1.2rem;
@@ -245,13 +245,13 @@ h1, h2, h3, p, .card-title, .card-text {
 }
 
 .btn-primary {
-    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    background: linear-gradient(45deg, #0083db, #3BB0DE);
     border: none;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(238, 90, 36, 0.4);
+    box-shadow: 0 5px 15px rgba(0, 140, 255, 0.4);
 }
 
 .btn-outline-dark {
